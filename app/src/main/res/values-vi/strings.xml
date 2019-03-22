@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name" translatable="false">Sổ Chi Tiêu</string>
+  <string name="add">Thêm</string>
+  <string name="view_report">Xem báo cáo</string>
+</resources>
