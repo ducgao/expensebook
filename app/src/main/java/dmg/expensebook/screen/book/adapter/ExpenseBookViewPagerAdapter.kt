@@ -1,10 +1,10 @@
-package dmg.expensebook.book.adapter
+package dmg.expensebook.screen.book.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import dmg.expensebook.book.fragment.AddFragment
-import dmg.expensebook.book.fragment.PageFragment
+import dmg.expensebook.screen.book.fragment.AddFragment
+import dmg.expensebook.screen.book.fragment.PageFragment
 
 class ExpenseBookViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 

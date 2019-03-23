@@ -1,4 +1,4 @@
-package dmg.expensebook.report
+package dmg.expensebook.screen.report
 
 import android.support.v7.app.AppCompatActivity
 

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import dmg.expensebook.home.HomeActivity
+import dmg.expensebook.screen.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

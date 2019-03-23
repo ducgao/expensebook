@@ -2,4 +2,7 @@
   <string name="app_name">Expense Book</string>
   <string name="add">Add</string>
   <string name="view_report">View report</string>
+  <string name="income">Income</string>
+  <string name="spend">Spend</string>
+  <string name="balance">Balance</string>
 </resources>

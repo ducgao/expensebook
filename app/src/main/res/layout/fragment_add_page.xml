@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".home.HomeActivity">
+    tools:context=".screen.home.HomeActivity">
 
   <android.support.constraint.ConstraintLayout
       android:id="@+id/container"

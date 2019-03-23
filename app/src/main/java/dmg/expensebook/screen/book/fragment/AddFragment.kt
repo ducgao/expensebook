@@ -1,4 +1,4 @@
-package dmg.expensebook.book.fragment
+package dmg.expensebook.screen.book.fragment
 
 import android.content.Intent
 import android.os.Build.VERSION

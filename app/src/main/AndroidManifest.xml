@@ -19,17 +19,17 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".home.HomeActivity">
+    <activity android:name=".screen.home.HomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
       </intent-filter>
     </activity>
-    <activity android:name=".report.ReportActivity">
+    <activity android:name=".screen.report.ReportActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
       </intent-filter>
     </activity>
-    <activity android:name=".book.BookActivity">
+    <activity android:name=".screen.book.BookActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
       </intent-filter>

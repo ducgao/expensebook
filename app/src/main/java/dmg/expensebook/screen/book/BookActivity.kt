@@ -1,4 +1,4 @@
-package dmg.expensebook.book
+package dmg.expensebook.screen.book
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.eftimoff.viewpagertransformers.RotateUpTransformer
 import dmg.expensebook.R
-import dmg.expensebook.book.adapter.ExpenseBookViewPagerAdapter
+import dmg.expensebook.screen.book.adapter.ExpenseBookViewPagerAdapter
 import dmg.expensebook.utils.INTENT_FILTER_ADD_NEW_BOOK_PAGE
 
 class BookActivity : AppCompatActivity() {
@@ -20,7 +20,11 @@ class BookActivity : AppCompatActivity() {
   private val tvAction: TextView by lazy { findViewById<TextView>(R.id.tvAction) }
   private val vpViewPager: ViewPager by lazy { findViewById<ViewPager>(R.id.vpViewPager) }
 
-  private val vpAdapter: ExpenseBookViewPagerAdapter by lazy { ExpenseBookViewPagerAdapter(supportFragmentManager) }
+  private val vpAdapter: ExpenseBookViewPagerAdapter by lazy {
+    ExpenseBookViewPagerAdapter(
+      supportFragmentManager
+    )
+  }
 
   private val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
