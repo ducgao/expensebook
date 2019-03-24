@@ -17,5 +17,5 @@ abstract class UIBuilderItem(
     return UIBuilderViewHolder(view)
   }
 
-  abstract fun onBind()
+  abstract fun onBind(index: Int)
 }

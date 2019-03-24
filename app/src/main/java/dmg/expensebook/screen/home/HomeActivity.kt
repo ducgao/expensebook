@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import dmg.expensebook.R
 import dmg.expensebook.core.UIBuilderAdapter
 import dmg.expensebook.uicomponent.DashBoardUIItem
+import dmg.expensebook.uicomponent.HomeActionUIItem
 
 class HomeActivity : AppCompatActivity() {
 
@@ -38,8 +39,10 @@ class HomeActivity : AppCompatActivity() {
   }
 
   private fun buildUI() {
-    val header1 = DashBoardUIItem(30000000, 26000000)
+    val header = DashBoardUIItem(30000000, 26000000)
+    val actionAdd = HomeActionUIItem(R.drawable.ic_add, R.string.add_page)
+    val actionSettings = HomeActionUIItem(R.drawable.ic_setting, R.string.settings)
 
-    adapter.updateData(listOf(header1))
+    adapter.updateData(listOf(header, actionAdd, actionSettings))
   }
 }

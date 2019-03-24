@@ -5,4 +5,6 @@
   <string name="income">Thu vào</string>
   <string name="spend">Chi tiêu</string>
   <string name="balance">Chênh lệch</string>
+  <string name="settings">Cài đặt</string>
+  <string name="add_page">Thêm sổ mới</string>
 </resources>

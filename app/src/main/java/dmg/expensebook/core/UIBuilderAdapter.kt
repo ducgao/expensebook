@@ -17,11 +17,15 @@ class UIBuilderAdapter(private val context: Context) : RecyclerView.Adapter<UIBu
     return this.data[p1].getViewHolder(context, p0)
   }
 
+  override fun getItemViewType(position: Int): Int {
+    return position
+  }
+
   override fun getItemCount(): Int {
     return this.data.size
   }
 
   override fun onBindViewHolder(p0: UIBuilderViewHolder, p1: Int) {
-    this.data[p1].onBind()
+    this.data[p1].onBind(p1)
   }
 }
