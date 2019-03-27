@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager.SpanSizeLookup
 import android.support.v7.widget.RecyclerView
 import dmg.expensebook.R
 import dmg.expensebook.core.UIBuilderAdapter
+import dmg.expensebook.data.Database
 import dmg.expensebook.uicomponent.DashBoardUIItem
 import dmg.expensebook.uicomponent.HomeActionUIItem
 
@@ -25,6 +26,12 @@ class HomeActivity : AppCompatActivity() {
 
     setUpRecyclerView()
     buildUI()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    val data = Database.getCategories().toList()
+    val something = data[0].color
   }
 
   private fun setUpRecyclerView() {

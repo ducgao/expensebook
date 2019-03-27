@@ -9,13 +9,13 @@ fun Context.screenWidth(): Int = resources.displayMetrics.widthPixels
 
 fun Context.isFirstTimeOpenApp(): Boolean {
   val prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
-  return prefs.getBoolean(FIRST_TIME_OPEN_APP_KEY, false)
+  return prefs.getBoolean(FIRST_TIME_OPEN_APP_KEY, true)
 }
 
 fun Context.setFirstTimeOpenApp() {
   val prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
   val editor = prefs.edit()
-  editor.putBoolean(FIRST_TIME_OPEN_APP_KEY, true)
+  editor.putBoolean(FIRST_TIME_OPEN_APP_KEY, false)
   editor.apply()
 }
 

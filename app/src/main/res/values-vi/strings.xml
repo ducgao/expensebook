@@ -7,4 +7,10 @@
   <string name="balance">Chênh lệch</string>
   <string name="settings">Cài đặt</string>
   <string name="add_page">Thêm sổ mới</string>
+
+  <string name="cate_eat">Ăn uống</string>
+  <string name="cate_traffic">Đi lại</string>
+  <string name="cate_personalize">Cá nhân</string>
+  <string name="cate_clothing">Quần áo</string>
+  <string name="cate_other">Khác</string>
 </resources>
