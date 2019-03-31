@@ -23,7 +23,7 @@ class InitialBookFragment : Fragment() {
 
     bindView(view)
     configUI()
-    setupViewAction()
+    showConfigDialog()
 
     return view
   }
@@ -39,14 +39,13 @@ class InitialBookFragment : Fragment() {
     }
   }
 
-  private fun setupViewAction() {
-    btnSelectMonthYear.setOnClickListener {
-      showMonthYearSelectionDialog()
-    }
+  private fun showConfigDialog() {
+    showMonthYearSelectionDialog()
   }
 
   private fun showMonthYearSelectionDialog() {
     val dialog = MonthYearSelectDialogFragment.create(3, 2019)
+    dialog.isCancelable = false
     dialog.show(fragmentManager, InitialBookFragment::class.java.name)
   }
 }

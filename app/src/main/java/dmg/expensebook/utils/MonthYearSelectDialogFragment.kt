@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.ViewPager
+import android.support.v4.view.ViewPager.OnPageChangeListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class MonthYearSelectDialogFragment : DialogFragment() {
 
     bindControls()
     setupViewPager()
+    setupAction()
 
     return mainView
   }
@@ -60,6 +62,35 @@ class MonthYearSelectDialogFragment : DialogFragment() {
       height = (displayWidth * 1.5).toInt()
     }
     vpViewPager.adapter = MonthYearSelectViewPagerAdapter(childFragmentManager)
+    vpViewPager.addOnPageChangeListener(object : OnPageChangeListener {
+      override fun onPageScrollStateChanged(p0: Int) {}
+
+      override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
+
+      override fun onPageSelected(p0: Int) {
+        if (p0 == 0) {
+          btnDone.isEnabled = false
+          btnBack.isEnabled = false
+        } else {
+          btnDone.isEnabled = true
+          btnBack.isEnabled = true
+        }
+      }
+    })
+  }
+
+  private fun setupAction() {
+    btnDone.setOnClickListener {
+      dismiss()
+    }
+    btnBack.setOnClickListener {
+      vpViewPager.setCurrentItem(0, true)
+    }
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    vpViewPager.clearOnPageChangeListeners()
   }
 }
 
