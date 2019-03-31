@@ -6,11 +6,37 @@
   <string name="spend">Chi tiêu</string>
   <string name="balance">Chênh lệch</string>
   <string name="settings">Cài đặt</string>
-  <string name="add_page">Thêm sổ mới</string>
+
+  <string name="add_book">Add sổ mới</string>
+  <string name="add_page">Add trang mới</string>
 
   <string name="cate_eat">Ăn uống</string>
   <string name="cate_traffic">Đi lại</string>
   <string name="cate_personalize">Cá nhân</string>
   <string name="cate_clothing">Quần áo</string>
   <string name="cate_other">Khác</string>
+
+  <string name="book_new">Sổ chi tiêu mới</string>
+  <string name="expense_book_for">Sổ Chi Tiêu Cho</string>
+
+  <string name="select_month_year">Chọn Tháng/Năm</string>
+
+  <string name="dialog_back">Quay lại</string>
+  <string name="dialog_done">Xong</string>
+
+  <string name="month_january">Tháng một</string>
+  <string name="month_february">Tháng hai</string>
+  <string name="month_march">Tháng ba</string>
+  <string name="month_april">Tháng tư</string>
+  <string name="month_may">Tháng năm</string>
+  <string name="month_june">Tháng sáu</string>
+  <string name="month_july">Tháng bảy</string>
+  <string name="month_august">Tháng tám</string>
+  <string name="month_september">Tháng chín</string>
+  <string name="month_october">Tháng mười</string>
+  <string name="month_november">Tháng mười một</string>
+  <string name="month_december">Tháng mười hai</string>
+
+  <string name="select_month">Chọn tháng</string>
+  <string name="select_year">Chọn năm</string>
 </resources>

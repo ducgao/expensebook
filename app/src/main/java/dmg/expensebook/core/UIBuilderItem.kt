@@ -1,21 +1,16 @@
 package dmg.expensebook.core
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-abstract class UIBuilderItem(
-  @LayoutRes private val layoutId: Int
-) {
+abstract class UIBuildModel {
+  abstract fun getViewHolder(context: Context, parent: ViewGroup?): UIBuilderViewHolder
+}
 
-  protected lateinit var view: View
+abstract class UIBuilderItem<T> {
 
-  fun getViewHolder(context: Context, parent: ViewGroup?): UIBuilderViewHolder {
-    view = LayoutInflater.from(context).inflate(layoutId, parent, false)
-    return UIBuilderViewHolder(view)
-  }
+  lateinit var view: View
 
-  abstract fun onBind(index: Int)
+  abstract fun onBind(index: Int, item: T)
 }

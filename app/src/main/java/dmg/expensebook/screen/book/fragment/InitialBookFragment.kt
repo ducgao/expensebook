@@ -1,27 +1,25 @@
 package dmg.expensebook.screen.book.fragment
 
-import android.content.Intent
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
-import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.AppCompatButton
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dmg.expensebook.R
-import dmg.expensebook.utils.INTENT_FILTER_ADD_NEW_BOOK_PAGE
+import dmg.expensebook.utils.MonthYearSelectDialogFragment
 import dmg.expensebook.utils.dip
 
-class AddFragment : Fragment() {
+class InitialBookFragment : Fragment() {
 
   private lateinit var container: ConstraintLayout
-  private lateinit var btnAdd: AppCompatButton
+  private lateinit var btnSelectMonthYear: AppCompatButton
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-    val view = inflater.inflate(R.layout.fragment_add_page, container, false)
+    val view = inflater.inflate(R.layout.fragment_initial_book, container, false)
 
     bindView(view)
     configUI()
@@ -32,7 +30,7 @@ class AddFragment : Fragment() {
 
   private fun bindView(view: View) {
     container = view.findViewById(R.id.container)
-    btnAdd = view.findViewById(R.id.btnAdd)
+    btnSelectMonthYear = view.findViewById(R.id.btnSelectMonthYear)
   }
 
   private fun configUI() {
@@ -42,10 +40,13 @@ class AddFragment : Fragment() {
   }
 
   private fun setupViewAction() {
-    btnAdd.setOnClickListener {
-      val intent = Intent(INTENT_FILTER_ADD_NEW_BOOK_PAGE)
-      val broadcastManager = LocalBroadcastManager.getInstance(requireContext())
-      broadcastManager.sendBroadcast(intent)
+    btnSelectMonthYear.setOnClickListener {
+      showMonthYearSelectionDialog()
     }
+  }
+
+  private fun showMonthYearSelectionDialog() {
+    val dialog = MonthYearSelectDialogFragment.create(3, 2019)
+    dialog.show(fragmentManager, InitialBookFragment::class.java.name)
   }
 }

@@ -8,8 +8,9 @@ import android.support.v7.widget.RecyclerView
 import dmg.expensebook.R
 import dmg.expensebook.core.UIBuilderAdapter
 import dmg.expensebook.data.Database
-import dmg.expensebook.uicomponent.DashBoardUIItem
-import dmg.expensebook.uicomponent.HomeActionUIItem
+import dmg.expensebook.uicomponent.DashBoardUIModel
+import dmg.expensebook.uicomponent.HomeActionUIModel
+import dmg.expensebook.utils.bookIntent
 
 class HomeActivity : AppCompatActivity() {
 
@@ -46,9 +47,15 @@ class HomeActivity : AppCompatActivity() {
   }
 
   private fun buildUI() {
-    val header = DashBoardUIItem(30000000, 26000000)
-    val actionAdd = HomeActionUIItem(R.drawable.ic_add, R.string.add_page)
-    val actionSettings = HomeActionUIItem(R.drawable.ic_setting, R.string.settings)
+    val header = DashBoardUIModel(30000000, 26000000)
+
+    val actionAdd = HomeActionUIModel(R.drawable.ic_add, R.string.add_book) {
+      startActivity(bookIntent(this@HomeActivity))
+    }
+
+    val actionSettings = HomeActionUIModel(R.drawable.ic_setting, R.string.settings) {
+
+    }
 
     adapter.updateData(listOf(header, actionAdd, actionSettings))
   }

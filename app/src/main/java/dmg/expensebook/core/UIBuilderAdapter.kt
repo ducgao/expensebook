@@ -6,9 +6,9 @@ import android.view.ViewGroup
 
 class UIBuilderAdapter(private val context: Context) : RecyclerView.Adapter<UIBuilderViewHolder>() {
 
-  private var data: List<UIBuilderItem> = emptyList()
+  private var data: List<UIBuildModel> = emptyList()
 
-  fun updateData(newData: List<UIBuilderItem>) {
+  fun updateData(newData: List<UIBuildModel>) {
     this.data = newData
     notifyDataSetChanged()
   }
@@ -26,6 +26,6 @@ class UIBuilderAdapter(private val context: Context) : RecyclerView.Adapter<UIBu
   }
 
   override fun onBindViewHolder(p0: UIBuilderViewHolder, p1: Int) {
-    this.data[p1].onBind(p1)
+    p0.onBind(p1, this.data[p1])
   }
 }
