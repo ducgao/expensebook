@@ -18,8 +18,7 @@ abstract class SingleSelectionDialogFragment : Fragment() {
     const val SELECTION_KEY = "SELECTION_KEY"
   }
 
-  private val originalSelection: String by lazy { arguments?.getString(SELECTION_KEY) ?: "" }
-  private var selection = originalSelection
+  private lateinit var selection: String
 
   private lateinit
   var mainView: View
@@ -29,6 +28,12 @@ abstract class SingleSelectionDialogFragment : Fragment() {
 
   abstract fun getTitle(): Int
   abstract fun getData(): List<String>
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    selection = arguments?.getString(SELECTION_KEY) ?: ""
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     mainView = inflater.inflate(R.layout.fragment_selection, container, false)

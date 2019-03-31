@@ -56,7 +56,7 @@ class SelectionUIItem : UIBuilderItem<SelectionUIModel>() {
     tvTitle.text = item.title
 
     if (item.selected) {
-      container.setBackgroundColor(ContextCompat.getColor(container.context, R.color.colorPrimary))
+      container.setBackgroundResource(R.drawable.selection_background)
       tvTitle.setTextColor(ContextCompat.getColor(tvTitle.context, android.R.color.white))
     } else {
       container.setBackgroundColor(ContextCompat.getColor(container.context, android.R.color.transparent))
