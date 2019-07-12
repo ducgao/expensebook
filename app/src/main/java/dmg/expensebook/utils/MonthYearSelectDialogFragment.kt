@@ -1,5 +1,6 @@
 package dmg.expensebook.utils
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import dmg.expensebook.R
+import java.util.Calendar
 
 class MonthYearSelectDialogFragment : DialogFragment() {
 
@@ -20,22 +22,53 @@ class MonthYearSelectDialogFragment : DialogFragment() {
     private const val SELECTION_YEAR_KEY = "SELECTION_YEAR_KEY"
 
     @JvmStatic
-    fun create(month: Int, year: Int): MonthYearSelectDialogFragment {
+    fun create(month: String, year: String, action: (String, String) -> Unit): MonthYearSelectDialogFragment {
       return MonthYearSelectDialogFragment().apply {
         arguments = Bundle().apply {
-          putInt(SELECTION_MONTH_KEY, month)
-          putInt(SELECTION_YEAR_KEY, year)
+          putString(SELECTION_MONTH_KEY, month)
+          putString(SELECTION_YEAR_KEY, year)
         }
+        callback = action
+      }
+    }
+
+    @JvmStatic
+    fun create(context: Context, action: (String, String) -> Unit): MonthYearSelectDialogFragment {
+      val c = Calendar.getInstance()
+      val year = c.get(Calendar.YEAR).toString()
+      val month = when (c.get(Calendar.MONTH)) {
+        0 -> context.getString(R.string.month_january)
+        1 -> context.getString(R.string.month_february)
+        2 -> context.getString(R.string.month_march)
+        3 -> context.getString(R.string.month_april)
+        4 -> context.getString(R.string.month_may)
+        5 -> context.getString(R.string.month_june)
+        6 -> context.getString(R.string.month_july)
+        7 -> context.getString(R.string.month_august)
+        8 -> context.getString(R.string.month_september)
+        9 -> context.getString(R.string.month_october)
+        10 -> context.getString(R.string.month_november)
+        else -> context.getString(R.string.month_december)
+      }
+
+      return MonthYearSelectDialogFragment().apply {
+        arguments = Bundle().apply {
+          putString(SELECTION_MONTH_KEY, month)
+          putString(SELECTION_YEAR_KEY, year)
+        }
+        callback = action
       }
     }
   }
+
+  lateinit var callback: (String, String) -> Unit
 
   private lateinit var vpViewPager: ViewPager
   private lateinit var btnBack: Button
   private lateinit var btnDone: Button
 
-  private val currentMonth: Int by lazy { arguments?.getInt(SELECTION_MONTH_KEY, -1) ?: -1 }
-  private val currentYear: Int by lazy { arguments?.getInt(SELECTION_YEAR_KEY, -1) ?: -1 }
+  private val currentMonth: String by lazy { arguments?.getString(SELECTION_MONTH_KEY) ?: "" }
+  private val currentYear: String by lazy { arguments?.getString(SELECTION_YEAR_KEY) ?: "" }
 
   private lateinit var mainView: View
 
@@ -61,7 +94,10 @@ class MonthYearSelectDialogFragment : DialogFragment() {
       width = displayWidth
       height = (displayWidth * 1.5).toInt()
     }
-    vpViewPager.adapter = MonthYearSelectViewPagerAdapter(childFragmentManager)
+    vpViewPager.adapter = MonthYearSelectViewPagerAdapter(childFragmentManager).apply {
+      currentMonth = this@MonthYearSelectDialogFragment.currentMonth
+      currentYear = this@MonthYearSelectDialogFragment.currentYear
+    }
     vpViewPager.addOnPageChangeListener(object : OnPageChangeListener {
       override fun onPageScrollStateChanged(p0: Int) {}
 
@@ -81,6 +117,7 @@ class MonthYearSelectDialogFragment : DialogFragment() {
 
   private fun setupAction() {
     btnDone.setOnClickListener {
+      callback.invoke(currentMonth, currentYear)
       dismiss()
     }
     btnBack.setOnClickListener {
@@ -96,11 +133,14 @@ class MonthYearSelectDialogFragment : DialogFragment() {
 
 class MonthYearSelectViewPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
 
+  lateinit var currentMonth: String
+  lateinit var currentYear: String
+
   override fun getItem(p0: Int): Fragment {
     return if (p0 == 0) {
-      MonthSelectFragment.create("July")
+      MonthSelectFragment.create(currentMonth)
     } else {
-      YearSelectFragment.create("2019")
+      YearSelectFragment.create(currentYear)
     }
   }
 

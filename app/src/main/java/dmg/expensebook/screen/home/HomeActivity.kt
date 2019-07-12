@@ -10,7 +10,7 @@ import dmg.expensebook.core.UIBuilderAdapter
 import dmg.expensebook.data.Database
 import dmg.expensebook.uicomponent.DashBoardUIModel
 import dmg.expensebook.uicomponent.HomeActionUIModel
-import dmg.expensebook.utils.bookIntent
+import dmg.expensebook.utils.MonthYearSelectDialogFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
     val header = DashBoardUIModel(30000000, 26000000)
 
     val actionAdd = HomeActionUIModel(R.drawable.ic_add, R.string.add_book) {
-      startActivity(bookIntent(this@HomeActivity))
+      showNewBookDialog()
     }
 
     val actionSettings = HomeActionUIModel(R.drawable.ic_setting, R.string.settings) {
@@ -58,5 +58,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     adapter.updateData(listOf(header, actionAdd, actionSettings))
+  }
+
+  private fun showNewBookDialog() {
+    val dialog = MonthYearSelectDialogFragment.create(this@HomeActivity) { selectedMonth, selectedYear ->
+    }
+
+    dialog.show(supportFragmentManager, HomeActivity::class.java.name)
   }
 }

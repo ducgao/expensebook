@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import dmg.expensebook.R
 import dmg.expensebook.utils.MonthYearSelectDialogFragment
 import dmg.expensebook.utils.dip
+import java.util.Calendar
 
 class InitialBookFragment : Fragment() {
 
@@ -44,7 +45,25 @@ class InitialBookFragment : Fragment() {
   }
 
   private fun showMonthYearSelectionDialog() {
-    val dialog = MonthYearSelectDialogFragment.create(3, 2019)
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = when (c.get(Calendar.MONTH)) {
+      0 -> getString(R.string.month_january)
+      1 -> getString(R.string.month_february)
+      2 -> getString(R.string.month_march)
+      3 -> getString(R.string.month_april)
+      4 -> getString(R.string.month_may)
+      5 -> getString(R.string.month_june)
+      6 -> getString(R.string.month_july)
+      7 -> getString(R.string.month_august)
+      8 -> getString(R.string.month_september)
+      9 -> getString(R.string.month_october)
+      10 -> getString(R.string.month_november)
+      else -> getString(R.string.month_december)
+    }
+    val dialog = MonthYearSelectDialogFragment.create(month, "$year") { selectedMonth, selectedYear ->
+
+    }
     dialog.isCancelable = false
     dialog.show(fragmentManager, InitialBookFragment::class.java.name)
   }
